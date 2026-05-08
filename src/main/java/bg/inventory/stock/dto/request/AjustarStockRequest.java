@@ -1,6 +1,5 @@
-package bg.inventory.stock.model;
+package bg.inventory.stock.dto.request;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,20 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-@Table(name = "stock")
-public class Stock {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @NotNull
-    private int cantidad;
+public class AjustarStockRequest {
     @NotNull
     private Long idProd;
     @NotNull
     private Long idBod;
+    @NotNull
+    private Integer delta;
 }

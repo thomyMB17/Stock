@@ -47,7 +47,7 @@ public class StockService {
     }
     // Stock por id
     public StockResponse getById(Long id){
-        Stock stock = stockRepository.findById(id).orElseThrow(() -> new RuntimeException("Id no encontrado"));
+        Stock stock = stockRepository.findById(id).orElseThrow(() -> new StockNotFoundException(id));
         return StockResponse.builder()
                 .id(stock.getId())
                 .cantidad(stock.getCantidad())
@@ -81,7 +81,7 @@ public class StockService {
     }
     // Stock por producto y bodega
     public StockResponse getByProdBod(Long idProd, Long idBod){
-        Stock stock = stockRepository.findByIdProdAndIdBod(idProd, idBod).orElseThrow(() -> new RuntimeException("Id no encontrado"));
+        Stock stock = stockRepository.findByIdProdAndIdBod(idProd, idBod).orElseThrow(() -> new StockNotFoundException(idProd, idBod));
         return StockResponse.builder()
                 .id(stock.getId())
                 .cantidad(stock.getCantidad())
