@@ -106,4 +106,9 @@ public class StockService {
                 .idBod(stockAct.getIdBod())
                 .build();
     }
+    // Eliminar Stock
+    public String deleteStock(Long id){
+        stockRepository.deleteById(id);
+        return "Stock eliminado correctamente";
+    }
 }
